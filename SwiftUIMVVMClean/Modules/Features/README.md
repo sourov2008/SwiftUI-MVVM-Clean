@@ -6,4 +6,4 @@ Vertical slices, each owning its MVVM stack and optional domain/data.
 - <Feature>/Domain/: Feature-specific use cases (optional; depend on shared Domain).
 - <Feature>/Data/: Feature-specific data (optional) if isolation is desired.
 
-Example: Onboarding, Accounts.
+Example: User, Onboarding, Accounts.

@@ -22,8 +22,12 @@ public final class HTTPClient {
     public func request<T: Decodable>(_ request: URLRequest, as type: T.Type = T.self) async throws -> T {
         do {
             let (data, response) = try await session.data(for: request)
-            guard let http = response as? HTTPURLResponse else { throw NetworkError.invalidResponse }
-            guard 200...299 ~= http.statusCode else { throw NetworkError.statusCode(http.statusCode) }
+            guard let http = response as? HTTPURLResponse else {
+                throw NetworkError.invalidResponse
+            }
+            guard 200...299 ~= http.statusCode else {
+                throw NetworkError.statusCode(http.statusCode)
+            }
             do {
                 return try JSONDecoder().decode(T.self, from: data)
             } catch {

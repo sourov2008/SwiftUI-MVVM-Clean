@@ -1,4 +1,4 @@
-# Domain
+# Domain: Shared
 
 Pure business rules. No platform or UI dependencies.
 
@@ -7,4 +7,3 @@ Pure business rules. No platform or UI dependencies.
 - Repositories/: Protocols defining data access boundaries.
 - UseCases/: Interactors orchestrating business operations (protocol + impl).
 - Errors/: Domain-specific error types.
-- DomainExports.swift: Re-exports for consumer convenience.

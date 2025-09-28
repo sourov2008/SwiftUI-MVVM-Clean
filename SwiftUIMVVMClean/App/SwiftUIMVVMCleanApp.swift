@@ -11,10 +11,8 @@ import SwiftUI
 struct SwiftUIMVVMCleanApp: App {
     var body: some Scene {
         WindowGroup {
-            let userRepository = RemoteUserRepository()
-            let fetchUsersUseCase = FetchUsersUseCase(repository: userRepository)
-            let viewModel = UsersViewModel(fetchUsersUseCase: fetchUsersUseCase)
-            UsersView(viewModel: viewModel)
+            let root = CompositionRoot()
+            root.makeUsersView()
         }
     }
 }
