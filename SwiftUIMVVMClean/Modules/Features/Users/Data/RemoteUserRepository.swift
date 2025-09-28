@@ -16,12 +16,17 @@ public struct RemoteUserRepository: UserRepository {
         self.client = client
         self.config = config
     }
-
+    
     public func fetchUsers() async throws -> [User] {
-        let url = config.baseURL.appendingPathComponent("users")
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        return try await client.request(request, as: [User].self)
+        do {
+            let url = config.baseURL.appendingPathComponent("users")
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            return try await client.request(request, as: [User].self)
+        } catch {
+            throw mapError(error)
+        }
     }
+
 }

@@ -95,3 +95,31 @@ struct UsersViewModelTests {
     }
 }
 
+@Suite("UsersViewModel error presentation")
+@MainActor
+struct UsersViewModelErrorPresentationTests {
+    private struct ThrowingUseCase: FetchUsersUseCaseProtocol {
+        let error: Error
+        func execute() async throws -> [User] { throw error }
+    }
+
+    @Test
+    func showsUnauthorizedMessage() async {
+        let useCase = ThrowingUseCase(error: RepositoryError.unauthorized)
+        let viewModel = UsersViewModel(fetchUsersUseCase: useCase)
+
+        await viewModel.load()
+
+        #expect(viewModel.errorMessage == RepositoryError.unauthorized.errorDescription)
+    }
+
+    @Test
+    func showsOfflineMessage() async {
+        let useCase = ThrowingUseCase(error: RepositoryError.offline)
+        let viewModel = UsersViewModel(fetchUsersUseCase: useCase)
+
+        await viewModel.load()
+
+        #expect(viewModel.errorMessage == RepositoryError.offline.errorDescription)
+    }
+}

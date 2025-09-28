@@ -42,6 +42,7 @@ public enum NetworkError: Error, LocalizedError {
     case decoding(Error)
     case transport(Error)
 
+    // TODO: localize the strings
     public var errorDescription: String? {
         switch self {
         case .invalidResponse:
