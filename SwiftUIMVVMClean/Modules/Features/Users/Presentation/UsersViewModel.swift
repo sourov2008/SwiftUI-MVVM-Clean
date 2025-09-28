@@ -28,7 +28,7 @@ public final class UsersViewModel: ObservableObject {
             let fetched = try await fetchUsersUseCase.execute()
             self.users = fetched
         } catch {
-            self.errorMessage = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+            self.errorMessage = error.localizedDescription
         }
         isLoading = false
     }

@@ -34,15 +34,14 @@ public struct UsersView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(user.name)
                             .font(.headline)
-                        if !user.email.isEmpty {
-                            Text(user.email)
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                        } else if !user.username.isEmpty {
-                            Text(user.username)
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                        }
+                        
+                        Text(user.email)
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+
+                        Text(user.username)
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
                     }
                     .padding(.vertical, 4)
                 }
@@ -61,11 +60,9 @@ public struct UsersView: View {
 
 #Preview {
     struct MockFetchUsersUseCase: FetchUsersUseCaseProtocol {
-        
         func execute() async throws -> [User] {
             return Bundle.main.decode([User].self, from: "MockUsers") ?? []
         }
-
     }
     let mockUseCase = MockFetchUsersUseCase()
     let viewModel = UsersViewModel(fetchUsersUseCase: mockUseCase)

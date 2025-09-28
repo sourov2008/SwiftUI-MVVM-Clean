@@ -30,12 +30,11 @@ struct UsersViewModelIntegrationTests {
 
     @Test("Loads users end to end from MockUsers.json")
     func loadsUsersFromJSON() async {
-        // Arrange: wire the real use case with a concrete repository backed by the bundle JSON
+
         let repository = MockUsersRepository(bundle: .main)
         let useCase = FetchUsersUseCase(repository: repository)
         let viewModel = UsersViewModel(fetchUsersUseCase: useCase)
 
-        // Act
         await viewModel.load()
 
         // Assert
@@ -46,12 +45,11 @@ struct UsersViewModelIntegrationTests {
 
     @Test("Presents an error when repository throws")
     func handlesRepositoryError() async {
-        // Arrange: simulate a failure path using a valid RepositoryError case
+
         let repository = ThrowingUsersRepository(error: .offline)
         let useCase = FetchUsersUseCase(repository: repository)
         let viewModel = UsersViewModel(fetchUsersUseCase: useCase)
 
-        // Act
         await viewModel.load()
 
         // Assert

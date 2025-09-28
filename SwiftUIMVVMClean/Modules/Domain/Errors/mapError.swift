@@ -8,7 +8,7 @@
 import Foundation
 
 func mapError(_ error: Error) -> RepositoryError {
-    // Example mappings — adapt to your HTTPClient’s error surface
+
     if let http = error as? NetworkError {
         switch http {
         case .statusCode(let code):
