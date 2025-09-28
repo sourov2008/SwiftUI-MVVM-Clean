@@ -5,7 +5,6 @@
 //  Created by Guest Datta on 22.09.25.
 //
 
-
 import Foundation
 import SwiftUI
 import Combine
@@ -16,21 +15,17 @@ public final class UsersViewModel: ObservableObject {
     @Published public private(set) var isLoading: Bool = false
     @Published public var errorMessage: String? = nil
 
-    private let repository: UserRepository
+    private let fetchUsersUseCase: FetchUsersUseCaseProtocol
 
-    public init(repository: UserRepository) {
-        self.repository = repository
-    }
-
-    public convenience init() {
-        self.init(repository: RemoteUserRepository())
+    public init(fetchUsersUseCase: FetchUsersUseCaseProtocol) {
+        self.fetchUsersUseCase = fetchUsersUseCase
     }
 
     public func load() async {
         isLoading = true
         errorMessage = nil
         do {
-            let fetched = try await repository.fetchUsers()
+            let fetched = try await fetchUsersUseCase.execute()
             self.users = fetched
         } catch {
             self.errorMessage = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
@@ -38,4 +33,3 @@ public final class UsersViewModel: ObservableObject {
         isLoading = false
     }
 }
-

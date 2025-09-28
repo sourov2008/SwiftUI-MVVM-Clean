@@ -9,10 +9,9 @@
 import SwiftUI
 
 public struct UsersView: View {
-    @StateObject var viewModel = UsersViewModel()
-
-    public init() {}
-
+    
+    @StateObject var viewModel: UsersViewModel
+    
     public var body: some View {
         Group {
             if viewModel.isLoading && viewModel.users.isEmpty {
@@ -61,5 +60,15 @@ public struct UsersView: View {
 }
 
 #Preview {
-    NavigationStack { UsersView() }
+    struct MockFetchUsersUseCase: FetchUsersUseCaseProtocol {
+        
+        func execute() async throws -> [User] {
+            return Bundle.main.decode([User].self, from: "MockUsers") ?? []
+        }
+
+    }
+    let mockUseCase = MockFetchUsersUseCase()
+    let viewModel = UsersViewModel(fetchUsersUseCase: mockUseCase)
+    return NavigationStack { UsersView(viewModel: viewModel) }
 }
+
