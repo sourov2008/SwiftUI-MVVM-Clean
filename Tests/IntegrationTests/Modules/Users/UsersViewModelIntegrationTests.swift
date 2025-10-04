@@ -13,6 +13,7 @@ import Testing
 @MainActor
 struct UsersViewModelIntegrationTests {
 
+    // MARK: - Mock Repositories
 
     private struct MockUsersRepository: UserRepository {
         let bundle: Bundle
@@ -22,7 +23,7 @@ struct UsersViewModelIntegrationTests {
     }
 
     private struct ThrowingUsersRepository: UserRepository {
-        let error: RepositoryError
+        let error: NetworkError
         func fetchUsers() async throws -> [User] { throw error }
     }
 
@@ -30,7 +31,6 @@ struct UsersViewModelIntegrationTests {
 
     @Test("Loads users end to end from MockUsers.json")
     func loadsUsersFromJSON() async {
-
         let repository = MockUsersRepository(bundle: .main)
         let useCase = FetchUsersUseCase(repository: repository)
         let viewModel = UsersViewModel(fetchUsersUseCase: useCase)
@@ -44,9 +44,9 @@ struct UsersViewModelIntegrationTests {
     }
 
     @Test("Presents an error when repository throws")
-    func handlesRepositoryError() async {
-
-        let repository = ThrowingUsersRepository(error: .offline)
+    func handlesNetworkError() async {
+        // You can use a specific NetworkError type
+        let repository = ThrowingUsersRepository(error: .transport(URLError(.notConnectedToInternet)))
         let useCase = FetchUsersUseCase(repository: repository)
         let viewModel = UsersViewModel(fetchUsersUseCase: useCase)
 
@@ -55,7 +55,6 @@ struct UsersViewModelIntegrationTests {
         // Assert
         #expect(viewModel.isLoading == false)
         #expect(viewModel.users.isEmpty)
-        #expect(viewModel.errorMessage == RepositoryError.offline.errorDescription)
+        #expect(viewModel.errorMessage == NetworkError.transport(URLError(.notConnectedToInternet)).errorDescription)
     }
 }
-

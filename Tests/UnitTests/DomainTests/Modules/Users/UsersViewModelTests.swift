@@ -98,6 +98,7 @@ struct UsersViewModelTests {
 @Suite("UsersViewModel error presentation")
 @MainActor
 struct UsersViewModelErrorPresentationTests {
+
     private struct ThrowingUseCase: FetchUsersUseCaseProtocol {
         let error: Error
         func execute() async throws -> [User] { throw error }
@@ -105,21 +106,22 @@ struct UsersViewModelErrorPresentationTests {
 
     @Test
     func showsUnauthorizedMessage() async {
-        let useCase = ThrowingUseCase(error: RepositoryError.unauthorized)
+        let useCase = ThrowingUseCase(error: NetworkError.statusCode(401))
         let viewModel = UsersViewModel(fetchUsersUseCase: useCase)
 
         await viewModel.load()
 
-        #expect(viewModel.errorMessage == RepositoryError.unauthorized.errorDescription)
+        #expect(viewModel.errorMessage == NetworkError.statusCode(401).errorDescription)
     }
 
     @Test
     func showsOfflineMessage() async {
-        let useCase = ThrowingUseCase(error: RepositoryError.offline)
+        let useCase = ThrowingUseCase(error: NetworkError.transport(URLError(.notConnectedToInternet)))
         let viewModel = UsersViewModel(fetchUsersUseCase: useCase)
 
         await viewModel.load()
 
-        #expect(viewModel.errorMessage == RepositoryError.offline.errorDescription)
+        #expect(viewModel.errorMessage == NetworkError.transport(URLError(.notConnectedToInternet)).errorDescription)
     }
 }
+

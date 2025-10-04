@@ -5,28 +5,32 @@
 //  Created by Guest Datta on 22.09.25.
 //
 
-
 import Foundation
 
 public struct RemoteUserRepository: UserRepository {
-    private let client: HTTPClient
+    private let network: NetworkClient
     private let config: AppConfiguration
 
-    public init(client: HTTPClient = .shared, config: AppConfiguration = .shared) {
-        self.client = client
+    public init(network: NetworkClient, config: AppConfiguration) {
+        self.network = network
         self.config = config
     }
-    
+
     public func fetchUsers() async throws -> [User] {
         do {
             let url = config.baseURL.appendingPathComponent("users")
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.setValue("application/json", forHTTPHeaderField: "Accept")
-            return try await client.request(request, as: [User].self)
+
+            let (data, response) = try await network.data(for: request)
+            try HTTP.validate(response)
+            return try HTTP.decode(data, as: [User].self)
         } catch {
-            throw mapError(error)
+            if let nserror = error as? NetworkError {
+                throw nserror
+            }
+            throw NetworkError.transport(error)
         }
     }
-
 }

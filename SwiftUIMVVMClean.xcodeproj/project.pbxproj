@@ -40,16 +40,28 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Modules/Infrastructure/Config/ConfigConstants.swift,
 			);
 			target = 8E2B7DAF2E8154D000B97D0B /* SwiftUIMVVMClean */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		8ECB50432E9180B900DD8D26 /* Exceptions for "SwiftUIMVVMClean" folder in "Copy Bundle Resources" phase from "SwiftUIMVVMClean" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 8E2B7DAE2E8154D000B97D0B /* Resources */;
+			membershipExceptions = (
+				Modules/Infrastructure/Config/ConfigConstants.swift,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8E2B7DB22E8154D000B97D0B /* SwiftUIMVVMClean */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				BB40060A2E82B2EF00F3CA2C /* Exceptions for "SwiftUIMVVMClean" folder in "SwiftUIMVVMClean" target */,
+				8ECB50432E9180B900DD8D26 /* Exceptions for "SwiftUIMVVMClean" folder in "Copy Bundle Resources" phase from "SwiftUIMVVMClean" target */,
 			);
 			path = SwiftUIMVVMClean;
 			sourceTree = "<group>";
