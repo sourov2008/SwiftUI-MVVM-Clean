@@ -13,6 +13,6 @@ Describes the project layout. Key folders:
 
 You should primarily add frameworks and third-party libraries only in the outermost layers of the architecture:
 
-✅ Infrastructure layer → networking, persistence, analytics (e.g. Alamofire, Realm, Firebase)
+✅ Infrastructure layer → The Infrastructure layer is where your app talks to the outside world. networking, persistence, analytics (e.g. Alamofire, Realm, Firebase)
 ✅ Presentation layer → UI frameworks (e.g. SwiftUI, Combine)
 🚫 Domain layer → should always remain pure Swift, no external dependencies.
