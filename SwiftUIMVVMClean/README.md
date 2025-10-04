@@ -3,7 +3,16 @@
 Describes the project layout. Key folders:
 
 - App: Thin iOS composition layer (app lifecycle, scenes, resources).
-- Modules: Source of truth for business code (Core, Domain, Data, SharedUI, Features, CompositionRoot).
+- Config: Tooling/configuration (linting, codegen, build settings, ci/cd).
+- Features: Different types of features like User, Payment, Purchase. Will have their individual Presentation, Data, Domain Folders.
+- Infrastructure: shared by all over app. Like networking, persistence, analytics
 - Tests: Test targets mirroring modules.
-- Config: Tooling/configuration (linting, codegen, build settings, secrets template).
-- Package.swift: SPM manifest for modularization in CI and previews.
+
+
+⚙️ Framework & Library Guidelines
+
+You should primarily add frameworks and third-party libraries only in the outermost layers of the architecture:
+
+✅ Infrastructure layer → networking, persistence, analytics (e.g. Alamofire, Realm, Firebase)
+✅ Presentation layer → UI frameworks (e.g. SwiftUI, Combine)
+🚫 Domain layer → should always remain pure Swift, no external dependencies.
