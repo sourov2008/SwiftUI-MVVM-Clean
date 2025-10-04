@@ -14,13 +14,14 @@ private struct MockUsersRepository: UserRepository {
     func fetchUsers() async throws -> [User] { toReturn }
 }
 
+@MainActor
 @Suite("FetchUsersUseCase unit tests")
 struct FetchUsersUseCaseTests {
     @Test
     func returnsUsersFromRepository() async throws {
         let usersFromJSON: [User] = Bundle.main.decode([User].self, from: "MockUsers") ?? []
         let repo = MockUsersRepository(toReturn: usersFromJSON)
-        let sut = await FetchUsersUseCase(repository: repo)
+        let sut = FetchUsersUseCase(repository: repo)
 
         let users = try await sut.execute()
 
@@ -30,4 +31,3 @@ struct FetchUsersUseCaseTests {
         }
     }
 }
-
