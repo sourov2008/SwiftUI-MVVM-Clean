@@ -2,9 +2,16 @@
 
 ![Swift](https://img.shields.io/badge/Swift-5-orange.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-15%2B-blue.svg)
+![iOS](https://img.shields.io/badge/Platform-iOS-lightgrey.svg)
+![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-green.svg)
+![Pattern](https://img.shields.io/badge/Pattern-MVVM-blue.svg)
+![Principle](https://img.shields.io/badge/Principle-OOP-purple.svg)
+![Principle](https://img.shields.io/badge/Principle-SOLID-red.svg)
+
 
 Welcome 👋  
-This project shows **how to build a scalable, testable, and easy to maintain SwiftUI app** using the **MVVM + Clean Architecture** approach.
+
+This project demonstrates a **scalable, maintainable, and testable iOS app structure** built with **SwiftUI**, following the **MVVM pattern** combined with **Clean Architecture**, **Object-Oriented Programming (OOP)**, and **SOLID principles**.  
 
 It’s written in **simple language and a clear folder structure**, so beginners can learn how to organize bigger SwiftUI projects the right way.
 
@@ -25,9 +32,9 @@ This means:
 - ✅ Ideal for long term apps — perfect for products that will evolve over the years.
 - ✅ Reusable logic - the same use cases can power multiple UIs (SwiftUI, UIKit, watchOS, macOS).
 - ✅ Better separation of concerns — UI code stays focused on display, not logic.
-- ✅ Plug-and-play dependencies — easily swap APIs, databases, or mock services.
+- ✅ Plug and play dependencies — easily swap APIs, databases, or mock services.
 - ✅ Improved readability — new team members can quickly understand the structure.
-- ✅ Future-proof design — your core logic survives framework changes.
+- ✅ Future proof design — your core logic survives framework changes.
 
 ---
 
