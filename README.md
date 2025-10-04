@@ -1,6 +1,6 @@
 # SwiftUI MVVM Clean Architecture
 
-+ ![Swift](https://img.shields.io/badge/Swift-5-orange.svg)
++ ![Swift](https://img.shields.io/badge/Swift-6-orange.svg)
 + ![Xcode](https://img.shields.io/badge/Xcode-15%2B-blue.svg)
 + ![iOS](https://img.shields.io/badge/Platform-iOS-lightgrey.svg)
 + ![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-green.svg)
