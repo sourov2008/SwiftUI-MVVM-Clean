@@ -1,15 +1,16 @@
 # SwiftUI MVVM Clean Architecture
 
-![Swift](https://img.shields.io/badge/Swift-5-orange.svg)
-![Xcode](https://img.shields.io/badge/Xcode-15%2B-blue.svg)
-![iOS](https://img.shields.io/badge/Platform-iOS-lightgrey.svg)
-![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-green.svg)
-![Pattern](https://img.shields.io/badge/Pattern-MVVM-blue.svg)
-![Principle](https://img.shields.io/badge/Principle-OOP-purple.svg)
-![Principle](https://img.shields.io/badge/Principle-SOLID-red.svg)
++ ![Swift](https://img.shields.io/badge/Swift-5-orange.svg)
++ ![Xcode](https://img.shields.io/badge/Xcode-15%2B-blue.svg)
++ ![iOS](https://img.shields.io/badge/Platform-iOS-lightgrey.svg)
++ ![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-green.svg)
++ ![Pattern](https://img.shields.io/badge/Pattern-MVVM-blue.svg)
++ ![Principle](https://img.shields.io/badge/Principle-OOP-purple.svg)
++ ![Principle](https://img.shields.io/badge/Principle-SOLID-red.svg)
 
 
-Welcome 👋  
+
+**Welcome 👋**   
 
 This project demonstrates a **scalable, maintainable, and testable iOS app structure** built with **SwiftUI**, following the **MVVM pattern** combined with **Clean Architecture**, **Object-Oriented Programming (OOP)**, and **SOLID principles**.  
 
@@ -19,10 +20,9 @@ It’s written in **simple language and a clear folder structure**, so beginners
 
 ## 🧠 Why This Project
 
-Many SwiftUI tutorials stop at **MVVM**, but when your app grows, things can get messy.  
-**Clean Architecture** helps you split your code into layers, each with a single job.
+This project is designed as a **reference architecture** for iOS developers who want to build real world iOS apps that remain clean, testable, and scalable over time.  
+It follows a structured approach using **MVVM**, **Clean Architecture**, **OOP**, and **SOLID principles** to ensure long-term maintainability and clarity.
 
-This project also follows **Object Oriented Programming (OOP)** and **SOLID principles** to make the architecture more reliable and reusable.
 
 This means:
 - ✅ Easier to test — business logic can be tested without running the app.
@@ -68,7 +68,7 @@ SwiftUI-MVVM-Clean
     └── PresentationTests
 ```
 
-Each folder has a clear purpose — this makes the app **easy to navigate and scale**.
+Each folder has a clear purpose; this makes the app **easy to navigate and scale**.
 
 > Tip: If your current repo layout is different, you can still follow the same layer ideas.
 
