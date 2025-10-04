@@ -40,7 +40,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				Modules/Infrastructure/Config/ConfigConstants.swift,
+				Infrastructure/Config/ConfigConstants.swift,
 			);
 			target = 8E2B7DAF2E8154D000B97D0B /* SwiftUIMVVMClean */;
 		};
@@ -51,7 +51,7 @@
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			buildPhase = 8E2B7DAE2E8154D000B97D0B /* Resources */;
 			membershipExceptions = (
-				Modules/Infrastructure/Config/ConfigConstants.swift,
+				Infrastructure/Config/ConfigConstants.swift,
 			);
 		};
 /* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
