@@ -58,18 +58,12 @@ Each folder has a clear purpose — this makes the app **easy to navigate and sc
 
 ---
 
-## 📸 How Data Flows
+## 📸 How Data Flows (Runtime Data Flow)
 
-```mermaid
-flowchart LR
-A[View] --> B[ViewModel]
-B --> C[UseCase]
-C --> D[Repository]
-D --> E[(API / Local Data)]
-E --> D
-D --> C
-C --> B
-B --> A
+```
+View → ViewModel → UseCase → Repository → API/LocalData
+↑                                               ↓
+└───────────── Updates UI with new data ────────┘
 ```
 
 **Explanation:**
@@ -229,9 +223,18 @@ Now you’ve added a full new feature — clean and testable 🎯
 ---
 
 
+## 🤖 AI Assistance
+
+This project was created by **Sourob Datta** with support from **AI tools (ChatGPT)** to organize structure, documentation, and examples.  
+The goal was to make Clean Architecture easy to understand for beginners learning SwiftUI + MVVM.
+
+---
+
 ## ❤️ Author
 
 **Sourob Datta**  
-Polished and support from AI tools (ChatGPT)
-iOS Developer • WatchOS developer.   
+iOS Developer • WatchOS developer.
+sourovsuet@gmail.com
 [GitHub Profile](https://github.com/sourov2008)
+
+
